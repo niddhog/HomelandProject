@@ -22,13 +22,13 @@ public class AktionsMenu : MonoBehaviour {
 
    public void bauenOnClick()
     {
-        if(TimeManagement.StopTime == true)
+        if(TimeManagement.stopTime == true)
         {
-            TimeManagement.StopTime = false;
+            TimeManagement.stopTime = false;
         }
         else
         {
-            TimeManagement.StopTime = true;
+            TimeManagement.stopTime = true;
         }
         if (bauZahl > 0) {
             bauZahl--;

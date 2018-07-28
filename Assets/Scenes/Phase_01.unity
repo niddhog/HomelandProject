@@ -264,20 +264,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &318802032
+--- !u!4 &318802032 stripped
 Transform:
-  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 4217894084486006, guid: 8389d97cb18395c4c92f349d2559dc20,
     type: 2}
   m_PrefabInternal: {fileID: 1607026870}
-  m_GameObject: {fileID: 2106915515}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 751.68677, y: 406.00616, z: 0}
-  m_LocalScale: {x: 119.70012, y: 119.70012, z: 0}
-  m_Children: []
-  m_Father: {fileID: 553086836}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &553086835
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc9008c1fc8cd340bf8549ad5bc735c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MonthList:
+  monthList:
   - {fileID: 1671909099138320, guid: 2a2375b2f35e730489dfd88512421a37, type: 2}
   - {fileID: 1499056788996730, guid: b0956b87b3d76814d9176542714bc583, type: 2}
   - {fileID: 1008813562435410, guid: 1839ed0b5d2e10b4b8379d9e88c0fa14, type: 2}
@@ -360,9 +351,8 @@ MonoBehaviour:
   - {fileID: 1120347957540776, guid: 0d0a0310d3ebcb84681a5e41d734b134, type: 2}
   zeiger: {fileID: 737245297}
   timeText: {fileID: 2048384236}
-  MonthPlacer: {fileID: 1440830869176446, guid: 2e3986e73a522e44b86c138ec22045d2,
-    type: 2}
   yearText: {fileID: 1082746230}
+  callNewsManagement: {fileID: 1144716169}
 --- !u!114 &581696844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2099,7 +2089,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8389d97cb18395c4c92f349d2559dc20, type: 2}
-  m_RootGameObject: {fileID: 2106915515}
   m_IsPrefabParent: 0
 --- !u!1 &1628064221
 GameObject:
@@ -3008,66 +2997,3 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085926909}
---- !u!1 &2106915515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1577583535634088, guid: 8389d97cb18395c4c92f349d2559dc20,
-    type: 2}
-  m_PrefabInternal: {fileID: 1607026870}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 318802032}
-  - component: {fileID: 2106915516}
-  m_Layer: 0
-  m_Name: ZeitGrafik
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &2106915516
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 212787826560266532, guid: 8389d97cb18395c4c92f349d2559dc20,
-    type: 2}
-  m_PrefabInternal: {fileID: 1607026870}
-  m_GameObject: {fileID: 2106915515}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 920607549
-  m_SortingLayer: 2
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 91d6b4c908ba0a549a0ace0d748b5c42, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3, y: 2}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0

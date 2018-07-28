@@ -4,24 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TimeManagement : MonoBehaviour {
-    public GameObject[] MonthList = new GameObject[12];
+    //Variables for the Clock//
+    public GameObject[] monthList = new GameObject[12];
     public Transform zeiger;
     public Text timeText;
-    static public bool StopTime = false; //um die Zeit anzuhalten
-    public GameObject MonthPlacer;
     public Text yearText;
-    NewsManagement CallNewsManagement;
-
-
     private const float secondsToDegrees = 360f / 240f; //wird für die EulerRotation benötigt
-    private int[] timeArray = new int[4]; //Timearray hat 3 Felder, Week(0), Month(1) und Year(2), speichert Total an Wochen, Monaten, jahren
-    private float seconds; //Anzahl Sekunden, die das Spiel bereits läuft
-    private bool lockMonth;//sorgt dafür, dass das Monatsemblem nicht bei jedem Update neu instantiated wird
-    private static int monthSentinel;
-    private GameObject tempMonth;
+    private static int monthSentinel;//Prevents the MonthEmblem from being destroyed before month has ended
+    private bool lockMonth;//Prevents Emblem from being instantiated after every update call
+    private GameObject month;//This Gameobject is used to Clone Instances of MonthEmblems
 
-    // Use this for initialization
-    int[] TimeCalculator(float t) //Eine Woche dauert 1 Minute
+
+    //Variables for TimeManagement//
+    static public bool stopTime = false; //Stops or Starts Timeflow
+    private int[] timeArray = new int[4]; //Week(0), Month(1), Year(2), Month in Sequence of 12(3)
+    private float seconds; //Gametime in Number of Seconds. Core Time Variable for the whole Game-Timeflow  
+
+
+    //Variables for NewsPanelPopup
+    public NewsManagement callNewsManagement;
+
+    //Initializining Function
+    void Start()
+    {
+        yearText.text = "1"; //Starts the Game with Year set to 1
+        lockMonth = false; //Month are not locked as they need to go through an initial Loop on Gamestart first
+        monthSentinel = 0; //Checks weither the Month has already changed or not
+    }
+
+    //Function to Define the Clock and its Subvalues (Weeks, Month, Years)
+    int[] TimeCalculator(float t) //One Week equals to 1 Minute
     {
        zeiger.localRotation =
                 Quaternion.Euler(0f, 0f, t * -secondsToDegrees);
@@ -32,53 +44,45 @@ public class TimeManagement : MonoBehaviour {
         return timeArray;
     }
 
-    void displayMonth(int monthSequence) //updates und displays das Monats Emblem
+    //Function to update and display the Month Emblem on the Clock
+    void displayMonth(int monthSequence)
     {
         if (!lockMonth)
         {
-            //Hier wird das Emblem erstellt (instantiate) und anschliessend plaziert:
-            GameObject month = (GameObject)Instantiate(MonthList[monthSequence], transform.position = new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            //The Following Code Creates the Month Emblem as A Child_Child of MiddleCanvas->MonthPosition.
+            GameObject month = Instantiate(monthList[monthSequence], transform.position = new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             month.transform.parent = GameObject.Find("MiddleCanvas").transform;
             month.transform.parent = GameObject.Find("MonthPosition").transform;
-            month.transform.position = GameObject.Find("MonthPosition").transform.position;
-            tempMonth = month; //Typecast ist nötig wegen Cancer Unity...
+            month.transform.position = GameObject.Find("MonthPosition").transform.position;//Emblem gets the same Position as the EmptyObject "MonthPosition"
         }
-
         if (monthSentinel == monthSequence)
         {
             lockMonth = true;
         }
         else
         {
-            Destroy(tempMonth);
+            Destroy(month);
             lockMonth = false;
             monthSentinel = monthSequence;
         }
     }
-
-    void Start () {
-        yearText.text = "1";
-        lockMonth = false;
-        monthSentinel = 0; //prüft ob sich der Monat verändert hat
-
-    }
 	
 	// Update is called once per frame
 	void Update () {
-        if (!StopTime)//Hält Zeit an solange true
+        if (!stopTime)//If True, Gametime Stops
         {
-            seconds += Time.deltaTime*10; //Time.time gibt die Zeit in Sekunden an, hier wird die Zeit vom Spielstart bis zum Timer start abgezogen, d.h. Timer wird genullt
-            TimeCalculator(seconds);
+            seconds += Time.deltaTime; //Time.deltatime is the time per frame and translates into Seconds, the multiplier is just for Test reasons to speed up time
+            TimeCalculator(seconds);//Translate the current time into Weeks, Month and Years
 
-            if (timeArray[2] == 10)//Spiel endet nach 10 jahren, End Condition
+            if (timeArray[2] == 10)//End the Game Condition
             {
                 timeText.text = "The End";
                 Debug.Log("The End");
             }
-            timeText.text = "Year: " + timeArray[2] + "; Month: " + (timeArray[1] % 12) + "; Week: " + (timeArray[0] % 4);
+            timeText.text = "Year: " + timeArray[2] + "; Month: " + (timeArray[1] % 12) + "; Week: " + (timeArray[0] % 4);//Display current Time in Weeks, Month and Years, for test only
             yearText.text = (timeArray[2] + 1).ToString();
             displayMonth(timeArray[3]);
-            //CallNewsManagement.DisplayNews(seconds);
+            callNewsManagement.DisplayNews(seconds);
         }
         
 	}
