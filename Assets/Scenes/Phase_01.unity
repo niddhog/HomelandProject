@@ -1321,7 +1321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66eea4d3ab9a0824eafbf84dc62dae88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NewsPanel: {fileID: 1575293804614968, guid: 41485d61b8a11c94fb286b2b6eb40cd2, type: 2}
+  newsPanel: {fileID: 1575293804614968, guid: 41485d61b8a11c94fb286b2b6eb40cd2, type: 2}
   newsText: {fileID: 114137031791729500, guid: 41485d61b8a11c94fb286b2b6eb40cd2, type: 2}
 --- !u!1 &1206550791
 GameObject:
