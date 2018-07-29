@@ -39,8 +39,6 @@ GameObject:
   - component: {fileID: 222706173336708986}
   - component: {fileID: 114035709233196834}
   - component: {fileID: 95278879715726534}
-  - component: {fileID: 114544531037703072}
-  - component: {fileID: 114248466716182632}
   m_Layer: 5
   m_Name: NewsPanel 1
   m_TagString: Untagged
@@ -125,31 +123,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: News1
---- !u!114 &114248466716182632
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1575293804614968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66eea4d3ab9a0824eafbf84dc62dae88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NewsPanel: {fileID: 0}
-  newsText: {fileID: 0}
---- !u!114 &114544531037703072
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1575293804614968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6581045b889d728438de7fddd7892f81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Text: News2
 --- !u!222 &222545261052610940
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -196,6 +170,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -303.88284, y: -124.101845}
+  m_AnchoredPosition: {x: -306.5866, y: 6.9690304}
   m_SizeDelta: {x: 1593, y: 149.3}
   m_Pivot: {x: 0.5, y: 0.5}

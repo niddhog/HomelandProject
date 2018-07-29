@@ -50,7 +50,7 @@ public class TimeManagement : MonoBehaviour {
         if (!lockMonth)
         {
             //The Following Code Creates the Month Emblem as A Child_Child of MiddleCanvas->MonthPosition.
-            GameObject month = Instantiate(monthList[monthSequence], transform.position = new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+            month = Instantiate(monthList[monthSequence], transform.position = new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             month.transform.parent = GameObject.Find("MiddleCanvas").transform;
             month.transform.parent = GameObject.Find("MonthPosition").transform;
             month.transform.position = GameObject.Find("MonthPosition").transform.position;//Emblem gets the same Position as the EmptyObject "MonthPosition"
@@ -80,7 +80,7 @@ public class TimeManagement : MonoBehaviour {
                 Debug.Log("The End");
             }
             timeText.text = "Year: " + timeArray[2] + "; Month: " + (timeArray[1] % 12) + "; Week: " + (timeArray[0] % 4);//Display current Time in Weeks, Month and Years, for test only
-            yearText.text = (timeArray[2] + 1).ToString();
+            yearText.text = (timeArray[2] + 1).ToString();//Adjust the YearText
             displayMonth(timeArray[3]);
             callNewsManagement.DisplayNews(seconds);
         }

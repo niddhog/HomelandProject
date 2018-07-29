@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class NewsManagement : MonoBehaviour {
     public GameObject NewsPanel;//Used for instantiating the NewsPanel Sprite
     public Text newsText;//Used for adjusting the Message inside the Panel
-    private float delay = 5f;//Delay in seconds, until Panel Animation is destroyed
-    private bool newsCast = true;
+    private bool newsCast = true; //used to avoid the animation playing more than once
+    private GameObject NewsBox;
 
     Dictionary<int,string> dictTexts = new Dictionary<int, string>()//Dict with all the News Messages
     {
@@ -19,7 +19,7 @@ public class NewsManagement : MonoBehaviour {
 
     public bool SetNewsText(float seconds)//This Function feeds the Dictionary into the animated Panel
     {
-        int secondsRounded = (int)Mathf.Round(seconds);
+        int secondsRounded = (int)Mathf.Round(seconds);//Rounds the seconds float to a whole integer
 
         //following are all the timebased, scripted News at the secondsRounded Mark
         if(secondsRounded == 5)
@@ -49,15 +49,19 @@ public class NewsManagement : MonoBehaviour {
     {
         if (SetNewsText(seconds) && newsCast)
         {
-            GameObject NewsBox = Instantiate(NewsPanel, transform.position = new Vector3(35f, 152f, 0), Quaternion.identity) as GameObject;
+            NewsBox = Instantiate(NewsPanel, transform.position = new Vector3(35f, 152f, 0), Quaternion.identity) as GameObject;
             NewsBox.transform.SetParent(GameObject.Find("MiddleCanvas").transform, false);//mittels false skaliert das instantiierte Objekt an den Globalen X und Y, nicht am Parent
             NewsBox.transform.SetParent(GameObject.Find("NewsPanel").transform, false);
-            Destroy(NewsBox, delay);
-            newsCast = false;
-        }
-        //float test = NewsBox.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length;
-        //AnimatorClipInfo[] infos = NewsBox.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0);
-        //Debug.Log(test);
-        //Debug.Log(infos.Length);     
+            float delay = GameObject.Find("NewsPanel").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;//length of the Animator Clip of the Panel
+            StartCoroutine (WaitTime(delay));//with this syntax we call the IEnumerator WaitTime
+            Destroy(NewsBox, delay);//Delets Object afer "delay" seconds
+            newsCast = false;//bool to false so the animation is not starting again
+        }   
+    }
+
+    IEnumerator WaitTime(float seconds)//This Function is used to wait "float seconds" seconds until the code below yield return... is executed
+    {
+        yield return new WaitForSeconds(seconds);
+        newsCast = true;
     }
 }
