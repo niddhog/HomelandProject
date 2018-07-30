@@ -81,7 +81,7 @@ public class ProgressBar : MonoBehaviour
     /// </summary>
     public void DisplayProgress()
     {
-        currentTime += Time.deltaTime;
+        currentTime += Time.deltaTime; // add TimeManagement.seconds from Timemanagement scripts
         progressBar.GetComponent<Slider>().value = currentTime; // define the slider to the current time/progress
         progressText.GetComponent<Text>().text = TimeInPercent().ToString("n0") + " %"; 
         if (currentTime >= limit) // if the active progess is finished

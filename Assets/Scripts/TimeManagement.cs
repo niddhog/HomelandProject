@@ -78,6 +78,7 @@ public class TimeManagement : MonoBehaviour {
             timeText.text = "Year: " + timeArray[2] + "; Month: " + (timeArray[1] % 12) + "; Week: " + (timeArray[0] % 4);
             yearText.text = (timeArray[2] + 1).ToString();
             displayMonth(timeArray[3]);
+            
             //CallNewsManagement.DisplayNews(seconds);
         }
         
