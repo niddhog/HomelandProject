@@ -17,7 +17,7 @@ public class TimeManagement : MonoBehaviour {
 
     //Variables for TimeManagement//
     public static bool stopTime = false; //Stops or Starts Timeflow
-    private int[] timeArray = new int[4]; //Week(0), Month(1), Year(2), Month in Sequence of 12(3)
+    public static int[] timeArray = new int[4]; //Week(0), Month(1), Year(2), Month in Sequence of 12(3)
     public float seconds; //Gametime in Number of Seconds. Core Time Variable for the whole Game-Timeflow  
 
 

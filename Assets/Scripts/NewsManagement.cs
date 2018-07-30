@@ -44,7 +44,8 @@ public class NewsManagement : MonoBehaviour
                 newsText.GetComponentInChildren<Text>().text = dictTexts[newsStack[i]];//get the NewsText from the Dictonary
                 if (newsCast)
                 {
-                    newsStack.RemoveAt(getStackLength());
+                    addNewsToNewsBox(i);//We only add news to the NewsBox when the News starts appearing on screen, not before
+                    newsStack.RemoveAt(getStackLength());//We remove the NewsEntry from the stack and display it
                     newsBox = Instantiate(newsPanel, transform.position = new Vector3(35f, 152f, 0), Quaternion.identity) as GameObject;
                     newsBox.transform.SetParent(GameObject.Find("MiddleCanvas").transform, false);//mittels false skaliert das instantiierte Objekt an den Globalen X und Y, nicht am Parent
                     newsBox.transform.SetParent(GameObject.Find("NewsPanel").transform, false);
@@ -107,5 +108,22 @@ public class NewsManagement : MonoBehaviour
     {
         StartCoroutine(WaitStackAdd(1));
         stopper = true;
+    }
+
+    private void addNewsToNewsBox(int j)
+    {
+        int slotsOccupied = 0;
+        for(int i = 0; i <= NewsBox.getDictLength(); i++)//First check weither there is a free slot in the dict or not
+        {
+            if (NewsBox.dictNews[i]==null)
+            {
+                NewsBox.dictNews[i] = dictTexts[newsStack[j]];
+                return;
+            }slotsOccupied += 1;
+        }
+        if(slotsOccupied == 8)//In this case all NewsSlots are Occupied, so we replace the oldest one
+        {
+            NewsBox.dictNews[7] = dictTexts[newsStack[j]];
+        }
     }
 }
