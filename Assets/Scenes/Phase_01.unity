@@ -352,6 +352,7 @@ MonoBehaviour:
   zeiger: {fileID: 737245297}
   timeText: {fileID: 2048384236}
   yearText: {fileID: 1082746230}
+  seconds: 0
   callNewsManagement: {fileID: 1144716169}
 --- !u!114 &581696844
 MonoBehaviour:
@@ -554,6 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1470c94aaa12354d83c5fb02a024b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopCounterDebug: {fileID: 0}
   bauZahlText: {fileID: 689744126}
 --- !u!114 &689744126
 MonoBehaviour:
@@ -643,6 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1470c94aaa12354d83c5fb02a024b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopCounterDebug: {fileID: 0}
   bauZahlText: {fileID: 0}
 --- !u!114 &711301792
 MonoBehaviour:
@@ -859,6 +862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1470c94aaa12354d83c5fb02a024b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopCounterDebug: {fileID: 0}
   bauZahlText: {fileID: 0}
 --- !u!222 &756905976
 CanvasRenderer:
@@ -1323,6 +1327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newsPanel: {fileID: 1575293804614968, guid: 41485d61b8a11c94fb286b2b6eb40cd2, type: 2}
   newsText: {fileID: 114137031791729500, guid: 41485d61b8a11c94fb286b2b6eb40cd2, type: 2}
+  newsCast: 1
+  newsStack: 
 --- !u!1 &1206550791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1470c94aaa12354d83c5fb02a024b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopCounterDebug: {fileID: 0}
   bauZahlText: {fileID: 756905974}
 --- !u!114 &1323271814
 MonoBehaviour:
@@ -2139,6 +2146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1470c94aaa12354d83c5fb02a024b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopCounterDebug: {fileID: 581696843}
   bauZahlText: {fileID: 0}
 --- !u!114 &1628064224
 MonoBehaviour:
@@ -2330,6 +2338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1470c94aaa12354d83c5fb02a024b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StopCounterDebug: {fileID: 0}
   bauZahlText: {fileID: 0}
 --- !u!114 &1740477975
 MonoBehaviour:

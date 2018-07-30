@@ -13,7 +13,7 @@ public class NewsManagement : MonoBehaviour
 {
     public GameObject newsPanel;//Used for instantiating the NewsPanel Sprite
     public Text newsText;//Used for adjusting the Message inside the Panel
-    private bool newsCast = true; //used to avoid the animation playing more than once
+    public bool newsCast = true; //used to avoid the animation playing more than once
     private GameObject newsBox;
     public List<int> newsStack = new List<int>();//Stack Datastructure used for queueing News if News overlap LiFo (LastIn/FirstOut), we save the dictText Keys in the Stack
     private bool stopper = false;
@@ -23,7 +23,7 @@ public class NewsManagement : MonoBehaviour
     {
         {2,"Ein Fremder trifft in eurem Lager ein und bittet euch um einen gefallen..."},
         {8,"Get Rekt or Git Better"},
-        {20,"Hoi zamen, ih verchaufe eu eh Bier für 15 SCHÄDE!"},
+        {20,"Hoi zamen, ih verchaufe eu eh Bier für 15 SCHÄDE"},
         {30,"News3"},
         {40,"News4"}
     };
@@ -36,7 +36,6 @@ public class NewsManagement : MonoBehaviour
 
     public void DisplayNews(float seconds)//seconds is the global time in which we know when to trigger which news
     {
-
         StackSetupTimeEvents(seconds);
         if (getStackLength() >= 0 && newsCast)
         {
@@ -57,7 +56,8 @@ public class NewsManagement : MonoBehaviour
             }
         }
 
-        
+
+
     }
 
     IEnumerator WaitTimePanelAnimation(float seconds)//This Function is used to wait "float seconds" seconds until the code below yield return... is executed

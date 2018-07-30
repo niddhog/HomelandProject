@@ -16,9 +16,9 @@ public class TimeManagement : MonoBehaviour {
 
 
     //Variables for TimeManagement//
-    static public bool stopTime = false; //Stops or Starts Timeflow
+    public static bool stopTime = false; //Stops or Starts Timeflow
     private int[] timeArray = new int[4]; //Week(0), Month(1), Year(2), Month in Sequence of 12(3)
-    private float seconds; //Gametime in Number of Seconds. Core Time Variable for the whole Game-Timeflow  
+    public float seconds; //Gametime in Number of Seconds. Core Time Variable for the whole Game-Timeflow  
 
 
     //Variables for NewsPanelPopup
@@ -66,7 +66,7 @@ public class TimeManagement : MonoBehaviour {
             monthSentinel = monthSequence;
         }
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (!stopTime)//If True, Gametime Stops
@@ -84,6 +84,5 @@ public class TimeManagement : MonoBehaviour {
             displayMonth(timeArray[3]);
             callNewsManagement.DisplayNews(seconds);
         }
-        
 	}
 }

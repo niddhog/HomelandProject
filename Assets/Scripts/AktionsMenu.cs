@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AktionsMenu : MonoBehaviour {
 
+    public TimeManagement StopCounterDebug;
     int bauZahl;//wieviel wir bauen können
     public Text bauZahlText; //wir erschaffen ein Objekt mit Bezug aufs Interface, Text direkt ansteuerbar dank UnityEngine.UI Package, sonst Gameobject
 
@@ -29,6 +30,7 @@ public class AktionsMenu : MonoBehaviour {
         else
         {
             TimeManagement.stopTime = true;
+            StopCounterDebug.seconds += 0.51f;//nötig um den Rundungsfehler auszumerzen
         }
         if (bauZahl > 0) {
             bauZahl--;
