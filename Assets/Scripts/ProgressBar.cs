@@ -8,35 +8,19 @@ public class ProgressBar : MonoBehaviour
     public GameObject ProgressPanel; // adding the ProgressPanel parent for the ProgressBars 
 
     public bool bauInProgress;
-    bool forschungInProgress;
-    bool upgradeInProgress;
-    string dictKey;
+    public Slider progressBar;
+    public Text progressText; 
 
-    private float startTime; 
-    private static float currentTime;
-
-    public Slider progressBar; // public
-    public Text progressText; // public
-
+    private bool forschungInProgress;
+    private bool upgradeInProgress;
+    private string dictKey;
     private static float limit;
     private float timePercent;
     private static float returnTime;
+    private float startTime;
+    private static float currentTime;
 
-    Dictionary<string, float> dictDuration = new Dictionary<string, float>()
-    {
-        {"Tower", 3},
-        {"House", 5},
-        {"Mill", 3},
-        {"Foresthut", 20}
-    };
 
-    Dictionary<string, float> dictProgress = new Dictionary<string, float>()
-    {
-        {"Tower", 0},
-        {"House", 0},
-        {"Mill", 0},
-        {"Foresthut", 0}
-    };
 
     /// <summary>
     /// Calculates the time in percent that a certain task needs.
@@ -71,7 +55,7 @@ public class ProgressBar : MonoBehaviour
             ProgressPanel.gameObject.SetActive(true); // setting the panel to active so it's visible, (maybe add parts first then make it visible?)
             bauInProgress = true; // if the bauInProgress button is pressed this variable is set to true
             dictKey = buttonArgument; // get the ButtonArgument from the dictionary to read out the correct time value for the progressBar
-            limit = dictDuration[dictKey]; // get the time duration of the process as a limit for the progress bar
+            limit = Dicts.dictDuration[dictKey]; // get the time duration of the process as a limit for the progress bar
             progressBar.GetComponent<Slider>().maxValue = limit; // set the limit of the progress bar to the limit.
         }
     }
@@ -89,14 +73,14 @@ public class ProgressBar : MonoBehaviour
             Debug.Log("Upgrade Complete");
             bauInProgress = false; // set active progress to inactive (because it's finished)
             // redefining dictionary entries to the new state
-            if (dictProgress[dictKey] > 3) // if the maximal progress of a building was reached
+            if (Dicts.dictProgress[dictKey] > 3) // if the maximal progress of a building was reached
             {
                 Debug.Log("Throw an exception in the future: maximal progress already reached!");
             } 
             else
             {
-                dictProgress[dictKey] += 1; //incrementing the progress of a building by 1
-                dictDuration[dictKey] += 5; //change duration of progress in the respective key
+                Dicts.dictProgress[dictKey] += 1; //incrementing the progress of a building by 1
+                Dicts.dictDuration[dictKey] += 5; //change duration of progress in the respective key
                 ResetSlider(); // Reset previous slider activity
                 ProgressPanel.gameObject.SetActive(false); // setting the Panel to inactive, as it should only be visible when a progressbar is active
             }

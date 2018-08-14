@@ -9,6 +9,7 @@ public class TimeManagement : MonoBehaviour {
     public Transform zeiger;
     public Text timeText;
     public Text yearText;
+    public Text secondsText; //Testvariable to display Seconds, just for testing
     private const float secondsToDegrees = 360f / 240f; //wird für die EulerRotation benötigt
     private static int monthSentinel;//Prevents the MonthEmblem from being destroyed before month has ended
     private bool lockMonth;//Prevents Emblem from being instantiated after every update call
@@ -72,6 +73,7 @@ public class TimeManagement : MonoBehaviour {
         if (!stopTime)//If True, Gametime Stops
         {
             seconds += Time.deltaTime; //Time.deltatime is the time per frame and translates into Seconds, the multiplier is just for Test reasons to speed up time
+            secondsText.text = seconds.ToString();//Display Seconds, For Tests Purpose Only
             TimeCalculator(seconds);//Translate the current time into Weeks, Month and Years
 
             if (timeArray[2] == 10)//End the Game Condition
