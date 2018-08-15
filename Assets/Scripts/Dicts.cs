@@ -79,4 +79,17 @@ public class Dicts : MonoBehaviour {
         {"Mill", 0},
         {"Foresthut", 0}
     };
+
+    /// <summary>
+    /// This Dict keeps track of which Buttons in the Menu can alrdy be used (1) and which are not accessible yet (0)
+    /// </summary>
+    public static Dictionary<string, int> dictMenuButtonsAvailable = new Dictionary<string, int>()
+    {
+        {"build",1},//Build Button, initially accessible
+        {"druid",1},//Druid Button, initially accessible
+        {"battle",0},//Battle Button, initially not accessible
+        {"quest",1},//Quest Button, initially not accessible
+        {"merc",0},//Mercenaries Button, initially not accessible
+        {"library",1},//Library Button, initially not accessible
+    };
 }

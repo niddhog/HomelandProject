@@ -389,7 +389,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 830429888}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -434,7 +434,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 306210486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1180502306}
+        m_MethodName: WakeProgressBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &306210486
@@ -504,7 +515,7 @@ RectTransform:
   m_LocalScale: {x: 0.9999949, y: 0.9999949, z: 0.9999949}
   m_Children: []
   m_Father: {fileID: 830429888}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -1250,7 +1261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.7, y: 0.4}
+  m_AnchoredPosition: {x: -0.7000122, y: 0.4000244}
   m_SizeDelta: {x: -1.4, y: -0.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757568326
@@ -1413,9 +1424,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2085926910}
+  - {fileID: 1040918149}
   - {fileID: 428785603}
   - {fileID: 306210484}
-  - {fileID: 1040918149}
   m_Father: {fileID: 581696847}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1562,11 +1573,11 @@ RectTransform:
   m_Children:
   - {fileID: 1236462823}
   m_Father: {fileID: 830429888}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -832, y: -383}
+  m_AnchoredPosition: {x: 860, y: -414}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040918150
@@ -1853,6 +1864,107 @@ MonoBehaviour:
   newsText: {fileID: 114137031791729500, guid: 41485d61b8a11c94fb286b2b6eb40cd2, type: 2}
   newsStack: 
   newsBox: {fileID: 1724766060}
+--- !u!1 &1180502304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1180502305}
+  - component: {fileID: 1180502309}
+  - component: {fileID: 1180502308}
+  - component: {fileID: 1180502307}
+  - component: {fileID: 1180502306}
+  m_Layer: 5
+  m_Name: ProgressBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1180502305
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180502304}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999949, y: 0.9999949, z: 0.9999949}
+  m_Children: []
+  m_Father: {fileID: 1223332708}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1, y: 0}
+  m_SizeDelta: {x: 1150, y: 760.99994}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1180502306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180502304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58abb23c98eaaea40ac6a06cc4df4b0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBox: {fileID: 1180502304}
+  yPos: 0
+--- !u!95 &1180502307
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180502304}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8ec6f7e1133de57449582233574cb228, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1180502308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180502304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 54562edcaf57d0f498192af4ef942a8e, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1180502309
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1180502304}
 --- !u!1 &1206550791
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,6 +2195,7 @@ RectTransform:
   - {fileID: 1219135746}
   - {fileID: 1724766061}
   - {fileID: 1754950659}
+  - {fileID: 1180502305}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2929,7 +3042,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 61026e308fae169409694989c73047a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e87ddecffbf4c394c92439599d14bfec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3719,6 +3832,7 @@ GameObject:
   - component: {fileID: 2085926913}
   - component: {fileID: 2085926912}
   - component: {fileID: 2085926911}
+  - component: {fileID: 2085926914}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -3783,7 +3897,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2085926912}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2085926914}
+        m_MethodName: CallMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2085926912
@@ -3819,3 +3944,30 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2085926909}
+--- !u!114 &2085926914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2085926909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd995b2d3873331418fc02dab17064cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuActive: 0
+  buildButton: {fileID: 1194112798686606, guid: ecc0335a765b4754ba7e60a724b348dd,
+    type: 2}
+  druidButton: {fileID: 1194112798686606, guid: 3551127b81aefbe438456f9feeab34fe,
+    type: 2}
+  battleButton: {fileID: 1021435369467858, guid: f8814f14636df5f4ea2ec72042083af8,
+    type: 2}
+  questButton: {fileID: 1361728882550690, guid: 5740da9169799624eb09c491ccb09603,
+    type: 2}
+  mercButton: {fileID: 1508480588979492, guid: cec557d50f23a284bb2c1fc35dee220b, type: 2}
+  libraryButton: {fileID: 1540906372570646, guid: 37a5a696b9fbda143b5e4fd93580986f,
+    type: 2}
+  buttonA: {fileID: 21300000, guid: 2389f380ead26054ba249a687488889c, type: 3}
+  buttonB: {fileID: 21300000, guid: d2907bfe6985d9f4e95ee1854cfd7a3e, type: 3}
+  animationEven: {fileID: 9100000, guid: 9642153054492ab4c9f783b520493f6f, type: 2}
+  animationUneven: {fileID: 9100000, guid: 7fb14b321f7c62c49b4b18527528fffe, type: 2}

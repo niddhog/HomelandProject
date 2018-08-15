@@ -5,28 +5,42 @@ using UnityEngine.UI;
 
 public class NewsBox : MonoBehaviour {
     private Text textField;
+    private bool destroyComplete = false; //destroyComplete works as a sentinel so that the loop in the update function does only run 1 time and not infinite times
     public Text newsText;
     public static int dictLength;
     public GameObject newsBox;
     public float yPos;
     public static bool coroutineOn = false;
     public static bool trigger = false; //used for synching the NewsBox realtime, linked to NewsManagement
+    public static bool newsBoxActive = false;
 
     public void WakeNewsBox()
     {
         if(gameObject.activeSelf == true)//Triggers if box is active
         {
-            newsBox.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);//needed in case the Animation of the Box is interrupted before finishing
-            newsBox.transform.position = new Vector2(0, 0);//needed i case the Animaton of the Box is interrupted before finishing
-            yPos = 0;
-            destroyTextChildren();
-            gameObject.SetActive(false);
+            newsBoxActive = false;
         }
         else                             //Triggers if box is inactive
         {
+            if (ProgressBox.progressBoxActive)
+            {
+                ProgressBox.progressBoxActive = false;
+            }
+            destroyComplete = false;
+            newsBoxActive = true;
             gameObject.SetActive(true);
             spawnAllNews();
         }       
+    }
+
+    private void destroyNewsBox()
+    {
+        newsBox.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);//needed in case the Animation of the Box is interrupted before finishing
+        newsBox.transform.position = new Vector2(0, 0);//needed i case the Animaton of the Box is interrupted before finishing
+        yPos = 0;
+        destroyTextChildren();
+        gameObject.SetActive(false);
+        destroyComplete = true;
     }
 
     /// <summary>
@@ -41,6 +55,9 @@ public class NewsBox : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Instantiate all News Texts inside the NewsBox
+    /// </summary>
     public void spawnAllNews()
     {
         yPos = 150f; //global y pos where to spawn News in Slot 0, after -40 is subtraced for each following news
@@ -65,6 +82,10 @@ public class NewsBox : MonoBehaviour {
 
     private void Update()
     {
+        if (!newsBoxActive && !destroyComplete)
+        {
+            destroyNewsBox();
+        }
         if (trigger && newsBox.activeSelf)
         {
             if (!coroutineOn)
