@@ -125,6 +125,11 @@ public class MenuScript : MonoBehaviour {
         menuActive = true;
     }
 
+    /// <summary>
+    /// Function is called when Player exits the Menu. This function manages the animation setup
+    /// for each individual button and then calls the DestroyChild() Function which deletes
+    /// each individual button from the hierarchy
+    /// </summary>
     private void DestroyMenu()
     {
         deleteIndex = 0;
@@ -151,6 +156,11 @@ public class MenuScript : MonoBehaviour {
         yPos = -195f;
     }
 
+
+    /// <summary>
+    /// Child with Index 0 is the Text in the MenuButton Gameobject and does not need to be destroyed, whereas
+    /// the other children are instantiated buttons which all need to be destroyed. This function handles it.
+    /// </summary>
     private void DestroyChildren()
     {
         deleteIndex = 0;
@@ -167,6 +177,11 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// This IEnumerator is used in order to wait until the exit Animation is over befor deleting the indivudial Buttons (children)
+    /// </summary>
+    /// <param name="seconds"></param>
+    /// <returns></returns>
     IEnumerator WaitBeforeDestroy(float seconds)//This Function is used to wait "float seconds" seconds until the code below yield return... is executed
     {
         yield return new WaitForSeconds(seconds);
@@ -176,10 +191,5 @@ public class MenuScript : MonoBehaviour {
         }
         DestroyChildren();
         yield return new WaitForSeconds(0.0001f);
-    }
-
-    private void Update()
-    {
-        Debug.Log(menuActive);
     }
 }
