@@ -19,6 +19,7 @@ public class NewsManagement : MonoBehaviour
 
     private GameObject newsPannel;
     private int stackLength;
+    private float delay; //used to store animationLength
 
     /// <summary>
     /// Returns the current length of newsStack (nr. of entries in this lsit)
@@ -47,7 +48,7 @@ public class NewsManagement : MonoBehaviour
                     newsPannel = Instantiate(newsPanel, transform.position = new Vector3(35f, 152f, 0), Quaternion.identity) as GameObject;
                     newsPannel.transform.SetParent(GameObject.Find("MiddleCanvas").transform, false);//mittels false skaliert das instantiierte Objekt an den Globalen X und Y, nicht am Parent
                     newsPannel.transform.SetParent(GameObject.Find("NewsPanel").transform, false);
-                    float delay = GameObject.Find("NewsPanel").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;//length of the Animator Clip of the Panel
+                    delay = GameObject.Find("NewsPanel").GetComponentInChildren<Animator>().GetCurrentAnimatorStateInfo(0).length;//length of the Animator Clip of the Panel
                     StartCoroutine(WaitTimePanelAnimation(delay,i));//with this syntax we call the IEnumerator WaitTime
                     Destroy(newsPannel, delay);//Delets Object afer "delay" seconds
                     newsCast = false;//bool to false so the animation is not starting again

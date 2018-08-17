@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
     private GameObject menuButton;
+    private int deleteIndex;
     private float yPos = -195f;
     private int dictIndex;
     private Image buttonImage;
     private Animator animator;
+    private float MenuExitDuration;
 
     public bool menuActive = false;
     public GameObject buildButton;
@@ -21,6 +23,9 @@ public class MenuScript : MonoBehaviour {
     public Sprite buttonB;
     public RuntimeAnimatorController animationEven;
     public RuntimeAnimatorController animationUneven;
+    public RuntimeAnimatorController OutanimationEven;
+    public RuntimeAnimatorController OutanimationUneven;
+    public static bool menuIsActive = false;
 
     /// <summary>
     /// Dictionary for the menu Buttons. There are (so far) 6 possible Button Slots. This Dict has to be
@@ -36,11 +41,14 @@ public class MenuScript : MonoBehaviour {
         {5,null},
     };
 
-
+    /// <summary>
+    /// Function which is linked to the NewsButton to call or deactivate the menu
+    /// </summary>
     public void CallMenu()
     {
         if (!menuActive)//Menu inactive
         {
+            DestroyChildren();
             SetupButtonOrder();
             InstantiateMenu();
         }
@@ -119,6 +127,59 @@ public class MenuScript : MonoBehaviour {
 
     private void DestroyMenu()
     {
+        deleteIndex = 0;
+        foreach (Transform child in transform)
+        {
+            animator = child.GetComponent<Animator>();
+            if (deleteIndex == 0)//Child 0 is the text of the button, we don't want anything to happen here
+            {
+
+            }
+            else if (deleteIndex % 2 == 0)//checks if button is in even position or not
+            {
+                animator.runtimeAnimatorController = OutanimationEven;
+            }
+            else
+            {
+                animator.runtimeAnimatorController = OutanimationUneven;
+            }
+            deleteIndex += 1;
+        }
+        MenuExitDuration = animator.GetCurrentAnimatorStateInfo(0).length;
+        StartCoroutine(WaitBeforeDestroy(MenuExitDuration));
         menuActive = false;
+        yPos = -195f;
+    }
+
+    private void DestroyChildren()
+    {
+        deleteIndex = 0;
+        foreach (Transform child in transform)
+        {
+            if(deleteIndex == 0)
+            {
+            }
+            else
+            {
+                Destroy(child.gameObject);
+            }
+            deleteIndex += 1;
+        }
+    }
+
+    IEnumerator WaitBeforeDestroy(float seconds)//This Function is used to wait "float seconds" seconds until the code below yield return... is executed
+    {
+        yield return new WaitForSeconds(seconds);
+        if (menuActive)
+        {
+            yield break;
+        }
+        DestroyChildren();
+        yield return new WaitForSeconds(0.0001f);
+    }
+
+    private void Update()
+    {
+        Debug.Log(menuActive);
     }
 }

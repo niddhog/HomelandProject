@@ -82,14 +82,15 @@ public class Dicts : MonoBehaviour {
 
     /// <summary>
     /// This Dict keeps track of which Buttons in the Menu can alrdy be used (1) and which are not accessible yet (0)
+    /// IMPORTANT: To activate a new Button in the Menu, we must set its key value to 1. To deactivate it we must set it to 0
     /// </summary>
     public static Dictionary<string, int> dictMenuButtonsAvailable = new Dictionary<string, int>()
     {
         {"build",1},//Build Button, initially accessible
         {"druid",1},//Druid Button, initially accessible
-        {"battle",0},//Battle Button, initially not accessible
+        {"battle",1},//Battle Button, initially not accessible
         {"quest",1},//Quest Button, initially not accessible
-        {"merc",0},//Mercenaries Button, initially not accessible
+        {"merc",1},//Mercenaries Button, initially not accessible
         {"library",1},//Library Button, initially not accessible
     };
 }

@@ -51,7 +51,7 @@ public class NewsBox : MonoBehaviour {
     {
         foreach (Transform child in GameObject.Find("Texts").transform)//with this function we destroy all the TextChilds (News) upon leaving the NewsMenu
         {
-            GameObject.Destroy(child.gameObject);
+            Destroy(child.gameObject);
         }
     }
 

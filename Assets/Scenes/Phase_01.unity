@@ -2631,7 +2631,7 @@ GameObject:
   - component: {fileID: 1487086082}
   - component: {fileID: 1487086081}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MenuButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3971,3 +3971,5 @@ MonoBehaviour:
   buttonB: {fileID: 21300000, guid: d2907bfe6985d9f4e95ee1854cfd7a3e, type: 3}
   animationEven: {fileID: 9100000, guid: 9642153054492ab4c9f783b520493f6f, type: 2}
   animationUneven: {fileID: 9100000, guid: 7fb14b321f7c62c49b4b18527528fffe, type: 2}
+  OutanimationEven: {fileID: 9100000, guid: 8712cf46b475a6844829ecf01ae3d1ab, type: 2}
+  OutanimationUneven: {fileID: 9100000, guid: 84cded273c84ba747aecc2dbbb432f01, type: 2}
