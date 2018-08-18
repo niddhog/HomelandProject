@@ -10,10 +10,13 @@ public class TimeManagement : MonoBehaviour {
     public Text timeText;
     public Text yearText;
     public Text secondsText; //Testvariable to display Seconds, just for testing
+
     private const float secondsToDegrees = 360f / 240f; //wird für die EulerRotation benötigt
     private static int monthSentinel;//Prevents the MonthEmblem from being destroyed before month has ended
     private bool lockMonth;//Prevents Emblem from being instantiated after every update call
     private GameObject month;//This Gameobject is used to Clone Instances of MonthEmblems
+    private bool coroutineInnerLoopSentinel=false;
+    private bool test = false;
 
 
     //Variables for TimeManagement//
@@ -83,8 +86,42 @@ public class TimeManagement : MonoBehaviour {
             }
             timeText.text = "Year: " + timeArray[2] + "; Month: " + (timeArray[1] % 12) + "; Week: " + (timeArray[0] % 4);//Display current Time in Weeks, Month and Years, for test only
             yearText.text = (timeArray[2] + 1).ToString();//Adjust the YearText
+
+
+            SetupCoroutine();
             displayMonth(timeArray[3]);
             callNewsManagement.DisplayNews(seconds);
         }
 	}
+
+    private void SetupCoroutine()
+    {
+        int SecondsSentinelRounded = (int)Mathf.Round(seconds);
+        if (SecondsSentinelRounded % 5 == 0) //Triggert alle 5 Sekunden
+        {
+            if (!coroutineInnerLoopSentinel)
+            {
+                StartCoroutine(BaseIncomeTick());
+                coroutineInnerLoopSentinel = true;
+            }
+        }
+    }
+
+
+
+    /// <summary>
+    /// BaseIncome triggers all 5 seconds
+    /// Zweites WaitForSeconds nötig da insgesamt 1 Sekunde vergehen muss wegen der Rundfunktion: Bsp. 4.5 wird auf 5 gerundet, nun vergeht 0.5 sekunden
+    /// und wir haben immer noch 5, erst ab 5.51 wird die Zahl auf 6 gerundet, d.h. von 5 her müssen nochmals 0.5 Sekunden vergehen
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator BaseIncomeTick()
+    {
+        yield return new WaitForSeconds(0.5001f);
+        CoinManagement.SetCoins();
+        CoinManagement.animateIncome = true;
+        yield return new WaitForSeconds(0.5f);
+        coroutineInnerLoopSentinel = false;
+        yield return new WaitForSeconds(0.00001f);
+    }
 }
