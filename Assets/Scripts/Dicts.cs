@@ -17,7 +17,7 @@ public class Dicts : MonoBehaviour {
         {4,null},
         {5,null},
         {6,null},
-        {7,null},
+        {7,null}
     };
 
     /// <summary>
@@ -33,7 +33,7 @@ public class Dicts : MonoBehaviour {
         {4,0},
         {5,0},
         {6,0},
-        {7,0},
+        {7,0}
     };
 
 
@@ -91,6 +91,45 @@ public class Dicts : MonoBehaviour {
         {"battle",1},//Battle Button, initially not accessible
         {"quest",1},//Quest Button, initially not accessible
         {"merc",1},//Mercenaries Button, initially not accessible
-        {"library",1},//Library Button, initially not accessible
+        {"library",1}//Library Button, initially not accessible
+    };
+
+    /// <summary>
+    /// This Dict consists of all the information showed in the monthInfoBox. Each entry is either a Subtitle or the relating SubText (see remarks below).
+    /// In Order to see more than just the first Subtitle and SubText, the player needs to research more information. He can research to a max of
+    /// 8 Entries in the monthInfoBox
+    /// </summary>
+    public static Dictionary<int, string> dictMonthInfoBox = new Dictionary<int, string>()//Dict with all the News Messages
+    {
+        {0,null},//SubTitleA
+        {1,null},//SubTextA
+        {2,null},//SubTitleB
+        {3,null},//SubTitleB
+        {4,null},
+        {5,null},
+        {6,null},
+        {7,null},
+        {8,null},
+        {9,null},
+        {10,null},
+        {11,null},
+        {12,null},
+        {13,null},
+        {14,null},
+        {15,null}
+    };
+
+    /// <summary>
+    /// This is the ResearchDict! In here are all the possible researches of the game. 0 means the research has not been learned yet, 1 means it has been learned.
+    /// </summary>
+    public static Dictionary<string,int> dictResearch = new Dictionary<string,int>()//Dict with all the News Messages
+    {
+        {"monthInfoBoxResearch1",0},//Name is just a placeholder, can be replaced by something like "meteorology" etc etc.
+        {"monthInfoBoxResearch2",0},
+        {"monthInfoBoxResearch3",0},
+        {"monthInfoBoxResearch4",0},
+        {"monthInfoBoxResearch5",0},
+        {"monthInfoBoxResearch6",0},
+        {"monthInfoBoxResearch7",0}
     };
 }

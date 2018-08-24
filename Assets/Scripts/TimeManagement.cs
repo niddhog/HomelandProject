@@ -15,8 +15,9 @@ public class TimeManagement : MonoBehaviour {
     private static int monthSentinel;//Prevents the MonthEmblem from being destroyed before month has ended
     private bool lockMonth;//Prevents Emblem from being instantiated after every update call
     private GameObject month;//This Gameobject is used to Clone Instances of MonthEmblems
-    private bool coroutineInnerLoopSentinel=false;
-    private bool test = false;
+    private bool incomeInnerLoopSentinel=false;
+    private bool costInnerLoopSentinel = false;
+    private bool incomeCostAlternate = true;//sorgt dafür, dass ein 5 Sek tick income und 5 sek danach wieder Cost tickt
 
 
     //Variables for TimeManagement//
@@ -88,40 +89,72 @@ public class TimeManagement : MonoBehaviour {
             yearText.text = (timeArray[2] + 1).ToString();//Adjust the YearText
 
 
-            SetupCoroutine();
+            SetupCoinCoroutine();
             displayMonth(timeArray[3]);
             callNewsManagement.DisplayNews(seconds);
         }
 	}
 
-    private void SetupCoroutine()
+
+    /// <summary>
+    /// This function is called on runtime (update) and ticks all 5 seconds, alternating between adding coin (CoinBaseIncome) and subtracting coin (CoinBaseCost) It 
+    /// corresponds directly with the Coinmanagement.cs Script
+    /// </summary>
+    private void SetupCoinCoroutine()
     {
-        int SecondsSentinelRounded = (int)Mathf.Round(seconds);
-        if (SecondsSentinelRounded % 5 == 0) //Triggert alle 5 Sekunden
+        int secondsSentinelRounded = (int)Mathf.Round(seconds);
+        if (secondsSentinelRounded % 5 == 0 && incomeCostAlternate && secondsSentinelRounded != 0) //Triggers each 5 seconds, but not on second 0
         {
-            if (!coroutineInnerLoopSentinel)
+            if (!incomeInnerLoopSentinel)
             {
                 StartCoroutine(BaseIncomeTick());
-                coroutineInnerLoopSentinel = true;
+                incomeInnerLoopSentinel = true;
+            }
+        }
+        if (secondsSentinelRounded % 5 == 0 && !incomeCostAlternate && secondsSentinelRounded != 0)
+        {
+            if (!costInnerLoopSentinel)
+            {
+                StartCoroutine(BaseCostTick());
+                costInnerLoopSentinel = true;
             }
         }
     }
-
-
 
     /// <summary>
     /// BaseIncome triggers all 5 seconds
     /// Zweites WaitForSeconds nötig da insgesamt 1 Sekunde vergehen muss wegen der Rundfunktion: Bsp. 4.5 wird auf 5 gerundet, nun vergeht 0.5 sekunden
     /// und wir haben immer noch 5, erst ab 5.51 wird die Zahl auf 6 gerundet, d.h. von 5 her müssen nochmals 0.5 Sekunden vergehen
+    /// These scripts correspond directly with the CoinManagement.cs Script
     /// </summary>
     /// <returns></returns>
     IEnumerator BaseIncomeTick()
     {
         yield return new WaitForSeconds(0.5001f);
-        CoinManagement.SetCoins();
+        CoinManagement.AddCoins();
+        MercenaryManagement.AddMercs();
+        WisdomManagement.AddWisdom();
         CoinManagement.animateIncome = true;
+        MercenaryManagement.animateMercGain = true;
+        WisdomManagement.animateWisdomGain = true;
         yield return new WaitForSeconds(0.5f);
-        coroutineInnerLoopSentinel = false;
+        incomeInnerLoopSentinel = false;
+        incomeCostAlternate = false;
+        yield return new WaitForSeconds(0.00001f);
+    }
+
+    IEnumerator BaseCostTick()
+    {
+        yield return new WaitForSeconds(0.5001f);
+        CoinManagement.SubtractCoins();
+        MercenaryManagement.SubtractMercs();
+        WisdomManagement.SubtractWisdom();
+        CoinManagement.animateCost = true;
+        MercenaryManagement.animateMercLoss = true;
+        WisdomManagement.animateWisdomLoss = true;
+        yield return new WaitForSeconds(0.5f);
+        costInnerLoopSentinel = false;
+        incomeCostAlternate = true;
         yield return new WaitForSeconds(0.00001f);
     }
 }
